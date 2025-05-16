@@ -1,0 +1,3 @@
+- move up and down at a specific speed
+- distinguish between player and AI
+- collides with ball

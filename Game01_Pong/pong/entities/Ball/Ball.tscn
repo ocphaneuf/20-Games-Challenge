@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsvd8hyy8q5eq"]
+
+[ext_resource type="Texture2D" uid="uid://d4c0pkbtyoajq" path="res://entities/Ball/ball_image.png" id="1_3bgl4"]
+[ext_resource type="Script" path="res://entities/Ball/ball.gd" id="1_g4lo4"]
+[ext_resource type="AudioStream" uid="uid://bb73p8kt87flg" path="res://entities/Ball/Paddle_Hit_Sound.wav" id="3_ysv2k"]
+[ext_resource type="AudioStream" uid="uid://bbn2q3gbnyltp" path="res://entities/Ball/Wall_Hit_Sound.wav" id="4_n03ue"]
+[ext_resource type="AudioStream" uid="uid://depplsb5ah6dn" path="res://entities/Ball/Background_Music.wav" id="5_hh2mq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n00t6"]
+radius = 26.0
+
+[node name="Ball" type="CharacterBody2D"]
+position = Vector2(512, 256)
+collision_layer = 3
+script = ExtResource("1_g4lo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n00t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_3bgl4")
+
+[node name="Paddle_Hit_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ysv2k")
+
+[node name="Wall_Hit_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n03ue")
+
+[node name="Background_Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-512, -256)
+stream = ExtResource("5_hh2mq")
+
+[node name="Ball" type="Node2D" parent="."]

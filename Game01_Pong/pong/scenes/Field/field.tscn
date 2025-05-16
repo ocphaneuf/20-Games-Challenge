@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bupykbje1rko3"]
+
+[ext_resource type="Texture2D" uid="uid://hbpxch65efae" path="res://scenes/Field/field3.png" id="1_0hn6g"]
+[ext_resource type="Script" path="res://scenes/Field/field.gd" id="1_wxdci"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60ah6"]
+size = Vector2(1024, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmtej"]
+size = Vector2(20, 512)
+
+[node name="Field" type="Node2D"]
+script = ExtResource("1_wxdci")
+
+[node name="WallTop" type="StaticBody2D" parent="."]
+position = Vector2(512, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
+shape = SubResource("RectangleShape2D_60ah6")
+
+[node name="WallBottom" type="StaticBody2D" parent="."]
+position = Vector2(512, 522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
+shape = SubResource("RectangleShape2D_60ah6")
+
+[node name="GoalLeft" type="Area2D" parent="."]
+position = Vector2(-10, 256)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft"]
+shape = SubResource("RectangleShape2D_gmtej")
+
+[node name="GoalRight" type="Area2D" parent="."]
+position = Vector2(1034, 256)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight"]
+shape = SubResource("RectangleShape2D_gmtej")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(512, 256)
+texture = ExtResource("1_0hn6g")
+
+[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
+[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
