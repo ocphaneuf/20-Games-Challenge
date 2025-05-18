@@ -26,6 +26,7 @@ Basic pong clone with 1P input and an AI opponent. Developed in Godot 4.3.
 - Godot has built-in shape creators rather than me having to create rectangles to pixel-perfect size in MSPaint
 - To call a different script's function within another script, call node/script.function
 - To update a variable from one script to a different script, call node/script.variable = new state
+- Each node has a "process" setting in the inspector. If you want to pause the game, make sure you have each node in the tree set to "pausable" that you want to not have processes running for, and likely the main game node and any background processing nodes set to always. You'll want the Esc Menu node set to always so it can be unpaused
 
 ## What I'd Improve Next Time
 - Simpler code

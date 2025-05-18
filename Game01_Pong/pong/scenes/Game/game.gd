@@ -9,11 +9,21 @@ var max_score = 3
 
 func _ready():
 	update_score()
+	$EscMenu.set_visible(false)
 	$StartTimer.start()
 	
 func _process(delta):
 	if $StartTimer.time_left > 1:
 		hud.get_node("CountdownContainer/CenterContainer/ActionText").set_text(str(round($StartTimer.time_left)))
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):		
+		if $EscMenu.visible:
+			$EscMenu.visible = false
+			get_tree().paused = false
+		else:
+			$EscMenu.visible = true
+			get_tree().paused = true
 
 func _on_field_goal_left():
 	score_player_two += 1
@@ -24,7 +34,6 @@ func _on_field_goal_left():
 	else:
 		show_winner("You lose...")
 		$AIPaddle/ai_input.game_over = true
-
 
 func _on_field_goal_right():
 	score_player_one += 1
@@ -68,3 +77,14 @@ func _on_final_screen_exit():
 
 func _on_final_screen_new_round() :
 	start_new_game()
+
+func _on_esc_menu_audio_off():
+	pass
+
+func _on_esc_menu_quit():
+	get_tree().quit()
+
+func _on_esc_menu_start_over():
+	start_new_game()
+	$EscMenu.set_visible(false)
+	get_tree().paused = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca0np08uvof6c"]
+[gd_scene load_steps=10 format=3 uid="uid://ca0np08uvof6c"]
 
 [ext_resource type="Script" path="res://scenes/Game/game.gd" id="1_6p3dw"]
 [ext_resource type="PackedScene" uid="uid://bupykbje1rko3" path="res://scenes/Field/field.tscn" id="1_h5gqy"]
@@ -8,19 +8,23 @@
 [ext_resource type="Script" path="res://entities/Paddle/ai_input.gd" id="4_y37tc"]
 [ext_resource type="PackedScene" uid="uid://cr3hfewhl8mwd" path="res://menus/HUD.tscn" id="7_j5x43"]
 [ext_resource type="PackedScene" uid="uid://c8sruttskscw2" path="res://scenes/FinalScreen.tscn" id="8_k641e"]
+[ext_resource type="PackedScene" uid="uid://dl1kmij4nnrkx" path="res://scenes/EscMenu.tscn" id="9_ltfje"]
 
 [node name="Game" type="Node"]
+process_mode = 3
 script = ExtResource("1_6p3dw")
 
 [node name="Field" parent="." instance=ExtResource("1_h5gqy")]
 
 [node name="PlayerPaddle" parent="." instance=ExtResource("2_meajq")]
+process_mode = 1
 position = Vector2(30, 256)
 
 [node name="player_input_component" type="Node" parent="PlayerPaddle"]
 script = ExtResource("3_vpoxh")
 
 [node name="AIPaddle" parent="." instance=ExtResource("2_meajq")]
+process_mode = 1
 position = Vector2(994, 256)
 
 [node name="ai_input" type="Node" parent="AIPaddle"]
@@ -28,19 +32,27 @@ script = ExtResource("4_y37tc")
 ball_path = NodePath("../../Ball")
 
 [node name="Ball" parent="." instance=ExtResource("3_cf13w")]
+process_mode = 1
 
 [node name="StartTimer" type="Timer" parent="."]
+process_mode = 1
 wait_time = 3.0
 one_shot = true
 autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("7_j5x43")]
+process_mode = 1
 
 [node name="FinalScreen" parent="." instance=ExtResource("8_k641e")]
 visible = false
+
+[node name="EscMenu" parent="." instance=ExtResource("9_ltfje")]
 
 [connection signal="goal_left" from="Field" to="." method="_on_field_goal_left"]
 [connection signal="goal_right" from="Field" to="." method="_on_field_goal_right"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="exit" from="FinalScreen" to="." method="_on_final_screen_exit"]
 [connection signal="new_round" from="FinalScreen" to="." method="_on_final_screen_new_round"]
+[connection signal="AudioOff" from="EscMenu" to="." method="_on_esc_menu_audio_off"]
+[connection signal="Quit" from="EscMenu" to="." method="_on_esc_menu_quit"]
+[connection signal="StartOver" from="EscMenu" to="." method="_on_esc_menu_start_over"]
