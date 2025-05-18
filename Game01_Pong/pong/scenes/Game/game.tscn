@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca0np08uvof6c"]
+[gd_scene load_steps=9 format=3 uid="uid://ca0np08uvof6c"]
 
 [ext_resource type="Script" path="res://scenes/Game/game.gd" id="1_6p3dw"]
 [ext_resource type="PackedScene" uid="uid://bupykbje1rko3" path="res://scenes/Field/field.tscn" id="1_h5gqy"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dsvd8hyy8q5eq" path="res://entities/Ball/Ball.tscn" id="3_cf13w"]
 [ext_resource type="Script" path="res://entities/Paddle/player_input.gd" id="3_vpoxh"]
 [ext_resource type="Script" path="res://entities/Paddle/ai_input.gd" id="4_y37tc"]
+[ext_resource type="PackedScene" uid="uid://cr3hfewhl8mwd" path="res://menus/HUD.tscn" id="7_j5x43"]
+[ext_resource type="PackedScene" uid="uid://c8sruttskscw2" path="res://scenes/FinalScreen.tscn" id="8_k641e"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_6p3dw")
@@ -28,9 +30,17 @@ ball_path = NodePath("../../Ball")
 [node name="Ball" parent="." instance=ExtResource("3_cf13w")]
 
 [node name="StartTimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="HUD" parent="." instance=ExtResource("7_j5x43")]
+
+[node name="FinalScreen" parent="." instance=ExtResource("8_k641e")]
+visible = false
 
 [connection signal="goal_left" from="Field" to="." method="_on_field_goal_left"]
 [connection signal="goal_right" from="Field" to="." method="_on_field_goal_right"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="exit" from="FinalScreen" to="." method="_on_final_screen_exit"]
+[connection signal="new_round" from="FinalScreen" to="." method="_on_final_screen_new_round"]

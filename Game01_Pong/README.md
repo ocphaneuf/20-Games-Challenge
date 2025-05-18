@@ -24,6 +24,8 @@ Basic pong clone with 1P input and an AI opponent. Developed in Godot 4.3.
 - Creating & assigning signals will create relevant functions in scene scripts
 - exporting variables is really useful to make them quickly editable in node inspectors
 - Godot has built-in shape creators rather than me having to create rectangles to pixel-perfect size in MSPaint
+- To call a different script's function within another script, call node/script.function
+- To update a variable from one script to a different script, call node/script.variable = new state
 
 ## What I'd Improve Next Time
 - Simpler code

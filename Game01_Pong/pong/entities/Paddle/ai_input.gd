@@ -6,6 +6,8 @@ class_name ai_input
 var ball: CharacterBody2D
 var paddle
 
+var game_over = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ball = get_node(ball_path) as CharacterBody2D
@@ -14,6 +16,9 @@ func _ready():
 	
 func calculate_velocity():
 	if not "direction" in paddle:
+		return
+	
+	if game_over:
 		return
 	
 	paddle.direction = Vector2(0, get_ball_direction())

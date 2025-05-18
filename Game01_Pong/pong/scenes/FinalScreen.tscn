@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8sruttskscw2"]
+
+[ext_resource type="Script" path="res://scenes/FinalScreen.gd" id="1_2vxx3"]
+
+[node name="FinalScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1024.0
+offset_bottom = 512.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_2vxx3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -42.5
+offset_right = 139.5
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ResultMessage" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 75
+horizontal_alignment = 1
+
+[node name="EndQuestion" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "Do you want to play another round?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 75
+alignment = 1
+
+[node name="NewRoundButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "New Round"
+
+[node name="FinishButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Finish"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NewRoundButton" to="." method="_on_new_round_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/FinishButton" to="." method="_on_finish_button_pressed"]
