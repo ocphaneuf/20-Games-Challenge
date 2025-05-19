@@ -7,10 +7,13 @@ var score_player_two = 0
 
 var max_score = 3
 
+var is_audio_muted := false
+
 func _ready():
 	update_score()
 	$EscMenu.set_visible(false)
 	$StartTimer.start()
+	print("Game Version:", ProjectSettings.get_setting("application/config/version"))
 	
 func _process(delta):
 	if $StartTimer.time_left > 1:
@@ -72,6 +75,13 @@ func show_winner(message):
 	$FinalScreen.set_visible(true)
 	$FinalScreen.get_node("VBoxContainer/ResultMessage").set_text(message)
 
+func toggle_audio():
+	is_audio_muted = !is_audio_muted
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), is_audio_muted)
+	
+	var label = "Mute Audio" if not is_audio_muted else "Unmute Audio"
+	$EscMenu/PanelContainer/VBoxContainer/AudioOff.text = label
+
 func _on_final_screen_exit():
 	get_tree().quit()
 
@@ -79,7 +89,7 @@ func _on_final_screen_new_round() :
 	start_new_game()
 
 func _on_esc_menu_audio_off():
-	pass
+	toggle_audio()
 
 func _on_esc_menu_quit():
 	get_tree().quit()

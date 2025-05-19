@@ -8,13 +8,15 @@ Basic pong clone with 1P input and an AI opponent. Developed in Godot 4.3.
 - [x] Add a paddle on either end of the play field. Use player inputs to move the paddles up and down.
 - [x] Add a ball that moves around the playfield and bounces off of the paddles and walls.
 - [x] Detect when the ball leaves the playfield. Assign a point to the player who scored.
-- [] Track and display the score for each player.
+- [x] Track and display the score for each player.
 
 ## Stretch goals:
 - [x] Write an AI script that can follow the ball so you can play with only one player.
 - [] Hint: Following the ball with a paddle is easy, but it makes the opponent impossible to beat. You might want to make the AI less than perfect somehow.
-- [] Add a menu and allow the player to reset the game.
+- [x] Add a (toggle-able) menu and allow the player to reset the game.
 - [x] Add some basic sounds. Play a sound every time the ball collides with something, and every time a player scores.
+- [x] Add a toggle-able mute button
+- [x] Version control name the game
 
 ## What I Learned:
 - Make sure the tutorials you watch are using the same version of the engine you're using (Tutorial using Godot 3 while I use updated Godot 4 with different phyiscs systems and syntax)
@@ -27,9 +29,13 @@ Basic pong clone with 1P input and an AI opponent. Developed in Godot 4.3.
 - To call a different script's function within another script, call node/script.function
 - To update a variable from one script to a different script, call node/script.variable = new state
 - Each node has a "process" setting in the inspector. If you want to pause the game, make sure you have each node in the tree set to "pausable" that you want to not have processes running for, and likely the main game node and any background processing nodes set to always. You'll want the Esc Menu node set to always so it can be unpaused
+- Use Godot project settings to name the version, export to a windows executable
+- Manually print the version on the game via a label if wanting the player to see it
+- A Godot game comes with a "Master" audio bus as default; muting that mutes the entire chain of audio; any more specific audio tuning will require individual, custom buses to be setup
 
 ## What I'd Improve Next Time
 - Simpler code
 - Smoother AI movement
 - Paddle and Ball sprites made in Godot
 - Better and more appropriate sounds
+- Implement a global audio manager

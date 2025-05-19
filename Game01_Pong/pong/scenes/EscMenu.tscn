@@ -41,7 +41,7 @@ vertical_alignment = 1
 [node name="AudioOff" type="Button" parent="PanelContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-text = "Turn off audio"
+text = "Mute Audio"
 
 [node name="StartOver" type="Button" parent="PanelContainer/VBoxContainer"]
 process_mode = 3
