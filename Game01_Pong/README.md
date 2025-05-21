@@ -1,4 +1,4 @@
-# Game 01 - Pong Clone
+# Game 01 - Pong
 
 ## Summary
 Basic pong clone with 1P input and an AI opponent. Developed in Godot 4.3.
