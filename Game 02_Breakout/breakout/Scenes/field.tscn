@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlbqsdlu1btcp"]
+
+[ext_resource type="Texture2D" uid="uid://b1nj6jphsib0r" path="res://Assets/Sprites/BreakoutBackground.png" id="1_t76iv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbto6"]
+size = Vector2(16, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4dpt"]
+size = Vector2(1024, 16)
+
+[node name="Field" type="Sprite2D"]
+position = Vector2(512, 512)
+texture = ExtResource("1_t76iv")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-522, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_hbto6")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(522, -522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(-2, 522)
+shape = SubResource("RectangleShape2D_hbto6")
+
+[node name="Ceiling" type="Area2D" parent="."]
+position = Vector2(0, -522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_l4dpt")
+
+[node name="Floor" type="Area2D" parent="."]
+position = Vector2(0, 522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_l4dpt")
+
+[node name="Field" type="Node2D" parent="."]

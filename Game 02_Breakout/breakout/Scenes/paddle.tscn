@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc63g35set2kl"]
+
+[ext_resource type="Texture2D" uid="uid://b6otskivuhkll" path="res://Assets/Sprites/more_breakout_pieces_0.png" id="1_ae8g4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ila1l"]
+size = Vector2(46, 14)
+
+[node name="Paddle" type="CharacterBody2D"]
+position = Vector2(512, 960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ila1l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ae8g4")
+region_enabled = true
+region_rect = Rect2(16.8261, 160.411, 46.9787, 15.4134)
+
+[node name="Paddle" type="Node2D" parent="."]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi64aw7g04bpv"]
+
+[ext_resource type="Texture2D" uid="uid://b6otskivuhkll" path="res://Assets/Sprites/more_breakout_pieces_0.png" id="1_kge5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_43sef"]
+radius = 8.0
+
+[node name="Ball" type="CharacterBody2D"]
+position = Vector2(512, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_43sef")
+
+[node name="Ball" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.98125, 1.02)
+texture = ExtResource("1_kge5u")
+region_enabled = true
+region_rect = Rect2(15.3944, 127.985, 17.1167, 16.5294)

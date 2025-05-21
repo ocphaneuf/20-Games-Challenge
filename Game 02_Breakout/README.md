@@ -24,6 +24,9 @@ Classic Breakout game built of of similar functions from Pong
 - [] Add spawning powerups to hit (enlarge paddle, multi-ball)
 
 ## What I Learned:
+- Better template folder structure for a game to have assets/sprites, assets/music, assets/sounds, assets/sprites
+- Better to start with a simple background for the prototype rather than create the perfect background/image asset from the beginning
+- Plenty of free assets to download and use; create sprite node, drag in the png file, click region, edit region, select the specific image from the full set
 - 
 
 ## What I'd Improve Next Time
