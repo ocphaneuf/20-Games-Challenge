@@ -1,0 +1,33 @@
+[gd_scene load_steps=10 format=3 uid="uid://d245t17fspbwe"]
+
+[ext_resource type="PackedScene" uid="uid://dlbqsdlu1btcp" path="res://Scenes/field.tscn" id="1_gpm7j"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_i3h66"]
+[ext_resource type="PackedScene" uid="uid://bi64aw7g04bpv" path="res://Scenes/ball.tscn" id="2_agc7k"]
+[ext_resource type="PackedScene" uid="uid://fa2pfle8oman" path="res://Scenes/audioManager.tscn" id="3_kvvnl"]
+[ext_resource type="PackedScene" uid="uid://4ed5ofh7ct63" path="res://Scenes/escMenu.tscn" id="4_noydk"]
+[ext_resource type="PackedScene" uid="uid://c1dbe3yo844rg" path="res://Scenes/level.tscn" id="5_sy4e0"]
+[ext_resource type="PackedScene" uid="uid://bc63g35set2kl" path="res://Scenes/paddle.tscn" id="6_je3qg"]
+[ext_resource type="PackedScene" uid="uid://b8ci0totaw0ow" path="res://Scenes/startMenu.tscn" id="7_se041"]
+[ext_resource type="PackedScene" uid="uid://b56kcxr7c4qtn" path="res://Scenes/UI.tscn" id="8_xro52"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_i3h66")
+
+[node name="Field" parent="." instance=ExtResource("1_gpm7j")]
+
+[node name="Ball" parent="." instance=ExtResource("2_agc7k")]
+
+[node name="Paddle" parent="." instance=ExtResource("6_je3qg")]
+
+[node name="Control" parent="." instance=ExtResource("4_noydk")]
+
+[node name="StartMenu" parent="." instance=ExtResource("7_se041")]
+
+[node name="UI" parent="." instance=ExtResource("8_xro52")]
+
+[node name="Level" parent="." instance=ExtResource("5_sy4e0")]
+
+[node name="AudioManager" parent="." instance=ExtResource("3_kvvnl")]
+
+[connection signal="CeilingHit" from="Field" to="." method="_on_field_ceiling_hit"]
+[connection signal="FloorHit" from="Field" to="." method="_on_field_floor_hit"]

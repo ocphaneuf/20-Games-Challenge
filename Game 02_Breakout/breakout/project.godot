@@ -15,7 +15,15 @@ run/main_scene="res://Scenes/paddle.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioManager="*res://Scenes/audioManager.tscn"
+
 [display]
 
 window/size/viewport_width=1024
 window/size/viewport_height=1024
+
+[global_group]
+
+paddles=""

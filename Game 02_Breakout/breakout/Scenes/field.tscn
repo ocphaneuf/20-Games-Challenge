@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlbqsdlu1btcp"]
+[gd_scene load_steps=5 format=3 uid="uid://dlbqsdlu1btcp"]
 
 [ext_resource type="Texture2D" uid="uid://b1nj6jphsib0r" path="res://Assets/Sprites/BreakoutBackground.png" id="1_t76iv"]
+[ext_resource type="Script" path="res://Scripts/field.gd" id="2_rm5vp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbto6"]
 size = Vector2(16, 1024)
@@ -11,6 +12,7 @@ size = Vector2(1024, 16)
 [node name="Field" type="Sprite2D"]
 position = Vector2(512, 512)
 texture = ExtResource("1_t76iv")
+script = ExtResource("2_rm5vp")
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 position = Vector2(-522, 0)
@@ -40,3 +42,6 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_l4dpt")
 
 [node name="Field" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="Ceiling" to="." method="_on_ceiling_body_entered"]
+[connection signal="body_entered" from="Floor" to="." method="_on_floor_body_entered"]

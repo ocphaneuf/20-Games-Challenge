@@ -27,6 +27,8 @@ Classic Breakout game built of of similar functions from Pong
 - Better template folder structure for a game to have assets/sprites, assets/music, assets/sounds, assets/sprites
 - Better to start with a simple background for the prototype rather than create the perfect background/image asset from the beginning
 - Plenty of free assets to download and use; create sprite node, drag in the png file, click region, edit region, select the specific image from the full set
+- Godot thinks of WAV files as short sound bytes; for any longer/looping music files, converting WAV to OGG is best; OGG can enable looping
+- Adding a scene to the AutoLoad list in Project Settings allow any script to access it at any time without having to create reference variables and nodes per script; this is good for global functions like AudioManager
 - 
 
 ## What I'd Improve Next Time
